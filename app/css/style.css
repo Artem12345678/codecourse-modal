@@ -1,0 +1,49 @@
+p {
+	margin-top:0;
+}
+
+.modal-container {
+	position:fixed;
+	background-color: #fff;
+	border: 1px solid #000;
+	left:50%;								/*Центрируем наше модальное
+											  окно*/
+	transform:translate(-50%,-200%);		/* По Y пишем -200%, чтоб скрыть
+											  его из виду по умолчанию*/
+	border-radius: 5px;
+	width:70%;
+	max-width:400px;
+	padding:20px;
+	transition: all 200ms ease-in-out;
+}
+
+.modal:before {
+	content: "";
+	position: fixed;
+	background-color: rgba(0,0,0,0.8);
+	width:100%;							/*Задаем ширину и высоту, если не
+										задать - то ну будет у нас вообще
+										ничего*/
+	height:100%;
+	left:0;								/*Если не задать эти вещи, то
+										Overlay будет не поностью на все
+										потому что есть вверху блок со
+										ссылкой*/
+	top:0;
+	display:none;
+}
+
+.modal:target .modal-container {		/*Связываем наши окна с помощью
+										псевдоэелемента target, который
+										обращается к нашему id*/
+	transform: translate(-50%,0);
+}
+
+.modal:target:before {					/*Показываем наш overlay*/
+	display:block;
+}
+
+#modal-close {							/*Чтобы при клике на close
+										нас не кидало наверх*/
+
+}
